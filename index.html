@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +7,575 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<style>
+/* ================= EXISTING ANIMATIONS ================= */
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll {
+  animation: scroll 18s linear infinite;
+}
+.pause:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slideDown {
+  animation: slideDown 1s ease-out forwards;
+}
+.delay-200 {
+  animation-delay: 0.5s;
+}
+
+@keyframes float {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  50% {
+    transform: translateY(10px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================= RESPONSIVE CSS ================= */
+
+/* 🔹 Mobile & Tablet */
+@media (max-width: 768px) {
+
+  /* Navbar */
+  ul.fixed {
+    width: 100% !important;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+  }
+
+  ul.fixed li {
+    margin-left: 10px !important;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  /* Hero Section */
+  .flex {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 32px !important;
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  p {
+    font-size: 14px !important;
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  button {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+
+  /* Hero Image */
+  img {
+    width: 100% !important;
+    height: auto !important;
+    margin-left: 0 !important;
+  }
+
+  /* Feature Pills */
+  .rounded-full {
+    flex-direction: column;
+    width: 90% !important;
+    height: auto !important;
+    margin: 30px auto !important;
+    padding-bottom: 20px;
+  }
+
+  /* About Section */
+  .mt-\[70px\] {
+    flex-direction: column;
+  }
+
+  .ml-\[190px\] {
+    margin-left: 0 !important;
+    text-align: center;
+  }
+
+  /* Cards (Bikes / Reviews / Services) */
+  .w-\[280px\],
+  .w-\[290px\],
+  .w-\[200px\] {
+    width: 90% !important;
+  }
+
+  .flex.gap-5,
+  .flex.flex-wrap {
+    justify-content: center;
+  }
+
+  /* Footer */
+  footer .flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+</style>
+
 <body>
-<ul class="flex p-4 bg-gray-800 text-white">
-<li class="ml-[40px]">logo</li>
-<li class="ml-[600px]">Home</li>
-<li class="ml-[30px]">About</li>
-<li class="relative group">
-<button class="ml-[30px]">Bikes</button>
-<ul class="absolute hidden group-hover:block w-40">
-<li><a href="sports.html">Sports Bikes</a></li>
-<li><a href="electric.html">Electric Bikes</a></li>
-<li><a href="cruiser.html">Cruiser Bikes</a></li>
+<ul class="flex items-center h-[45px] z-10 px-7 bg-[#2F3E22] text-[#F5F5DC] fixed w-[1300px]">
+<li class="ml-[25px] text-[25px] font-bold text-[#C2A14D]">YAMAHA</li>
+<li class="ml-[500px] font-semibold text-[18px] px-2 rounded hover:bg-[#C2A14D] hover:text-[#2F3E22] transition duration-300">Home</li>
+<li class="ml-[30px] font-semibold text-[18px] px-2 rounded hover:bg-[#C2A14D] hover:text-[#2F3E22] transition duration-300">About</li>
+<li class="relative group ml-[30px]"><button class="font-semibold text-[18px] px-2 rounded hover:bg-[#C2A14D] hover:text-[#2F3E22] transition duration-300">Bikes</button>
+<ul class="absolute hidden group-hover:block mt-2 w-40 bg-[#2F3E22] p-4 rounded-xl text-[16px] shadow-[0_6px_45px_rgba(0,255,0,0.5)]">
+<li><a href="sports.html" class="hover:text-[#C2A14D]">Sports Bikes</a></li>
+<li><a href="electric.html" class="hover:text-[#C2A14D]">Electric Bikes</a></li>
+<li><a href="cruiser.html" class="hover:text-[#C2A14D]">Cruiser Bikes</a></li>
 </ul>
 </li>
-<li class="ml-[35px]">Services</li>
-<li class="ml-[35px]">Contact</li>
-<li class="ml-[35px]">Log in</li>
-<li class="ml-[35px]">Sign up</li>
+<li class="ml-[35px] font-semibold text-[18px] px-1 rounded hover:bg-[#C2A14D] hover:text-[#2F3E22]"><a href="">Services</a></li>
+<li class="ml-[35px] font-semibold text-[18px] bg-[#C2A14D] px-3 py-1 rounded hover:bg-[#F5F5DC] hover:text-[#2F3E22]"><a href="login.html">Login</a></li>
+<li class="ml-[20px] font-semibold text-[18px] bg-[#C2A14D] px-3 py-1 rounded hover:bg-[#F5F5DC] hover:text-[#2F3E22]">Sign up </li>
 </ul>
-<div class="bg-gradient-to-br from-[#066b6b] via-blue-300 to-[#066b6b] h-[525px] flex">
-    <div>
-    <h1 class="border-2 w-[700px]  h-[525px] bg-[#066b6b9d] border-none [clip-path:polygon(0_0,80%_0,100%_50%,80%_100%,0_100%)]"></h1>
-    </div>
 
+<div class=" flex">
+<div>
+<h1 class="text-[#2F3E22] text-[53px] font-bold mt-[200px] ml-[30px] animate-slideDown">Ride Pure Ride <span class="text-[#C2A14D]">Powerful</span></h1>
+<p class="ml-[30px]  text-[15px] mt-[10px] font-semibold animate-slideDown delay-200">Discover bikes that combine modern design with raw power. 
+Engineered for smooth<br>performance and styled to stand out, our bikes are made for riders who believe every<br>
+journey should be bold, comfortable, and unforgettable.</p>
+<button class="bg-[#C2A14D] text-[#F5F5DC] font-bold ml-[30px] mt-[20px] 
+px-2 py-2 rounded hover:text-[#F5F5DC] hover:bg-[#2F3E22] transition">
+Book a Test Ride</button>
+<button class="text-[#F5F5DC] bg-[#2F3E22] font-bold ml-[16px] mt-[20px] 
+px-6 py-2 rounded hover:text-[#F5F5DC] hover:bg-[#C2A14D] transition">
+Explore</button>
+</div>
+<div>
+    <img class=" ml-[80px] w-[550px] h-[540px] mt-[30px] opacity-0 animate-[float_1.5s_ease-out_forwards]" src="image/hero-removebg-preview.png">
+</div>
+</div>
+<div class="flex border-2 border-[#2F3E22] w-[620px] mt-[50px] ml-[280px] h-[110px] border-none rounded-full bg-[#C2A14D]">
+    <h1 class="mt-[18px] ml-[28px] font-bold text-[#2F3E22]"><span class="ml-[25px] text-[30px] bg-[#2F3E22] p-2 rounded-full">⛽</span><br>Better Mileage</h1>
+    <h1 class="mt-[18px] ml-[30px] font-bold text-[#2F3E22]"><span class="ml-[75px] text-[30px] bg-[#2F3E22] p-2 rounded-full">⚡ </span><br>High Performance Engine</h1>
+    <h1 class="mt-[18px] ml-[30px] font-bold text-[#2F3E22]"><span class="ml-[72px] text-[30px] bg-[#2F3E22] p-2 rounded-full">🛡️</span><br> Advanced Safety Features</h1>
+</div>
+
+<div class="mt-[70px] flex">
     <div>
-    <img class="mt-[80px] " src="image/images_1_-removebg-preview.png">
+    <img 
+  class="w-[670px] h-[610px] 
+  opacity-0 scale-95 translate-y-16
+  transition-all duration-700 ease-out"
+  data-scroll
+  src="image/hero2-removebg-preview.png">
+    </div>
+    <div>
+    <h1 class="text-[40px] ml-[190px] mt-[20px] font-bold text-[#2F3E22]">About<span class="text-[#C2A14D] ml-[6px]">Us</span></h1>
+    <p class="mt-[30px] font-semibold">We believe a bike is more than just a machine — it’s 
+    a part of your daily life.<br> Our focus is on delivering bikes
+    that are comfortable, reliable, and powerful<br> on every road.
+    From city rides to long journeys, each model is designed with<br>
+    attention to detail, modern styling, and smooth performance,
+    so you can ride<br> with confidence every day.</p>
+    <h1 class="text-[30px] text-[#C2A14D] font-bold mt-[30px]">Why We Ride?</h1>
+    <p class="mt-[10px] font-semibold">We ride for freedom, confidence, and the joy of the road. It’s not just about<br>
+    the destination,but the feeling, the power, and the rhythm of every ride.We <br>ride for freedom, the road, and the feeling only two wheels can give.</p>
+    <button class="bg-[#2F3E22] hover:bg-[#C2A14D] text-[#F5F5DC] text-[15px] font-semibold rounded p-2 w-[110px] mt-[20px]">Learn More </button>
     </div>
 </div>
+
+<!---Bikes -->
+<div>
+    <h1 class="mt-[20px] text-[45px] text-[#2F3E22] font-bold text-center">Our <span class="text-[#C2A14D]">Bikes</span></h1>
+    <p class="text-[20px]  font-semibold text-center">Where Performance Meets Prestige</p>
+</div>
+<div class="overflow-hidden py-12 bg-[#f7f4ef] mt-[30px]">
+<div class="flex w-max animate-scroll pause">
+<div class="w-[280px] h-[390px] bg-[#2F3E22] mx-4 border-2 border-[#2F3E22] rounded-xl  shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+<img class="rounded-xl h-[210px]" src="image/image1.jpg">
+<h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha FZ-S FI</h1>
+<h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹1.55 Lakh*</h2>
+<h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★★★ 5.0</h3>
+<button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+
+<div class="w-[280px] h-[390px] bg-[#2F3E22] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+<img class="rounded-xl h-[200px] w-[290px]" src="image/image3.jpg">
+<h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha R3</h1>
+<h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹2.90 Lakh*</h2>
+<h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★★★ 4.0</h3>
+<button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+
+<div class="w-[280px] h-[390px] bg-[#2F3E22] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+<img class="rounded-xl w-[300px]" src="image/image2.jpg">
+<h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha R15 V4</h1>
+<h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹3.90 Lakh*</h2>
+<h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★★★ 4.6</h3>
+<button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+
+<div class="w-[280px] bg-[#2F3E22] h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+<img class="rounded-xl h-[200px] w-[300px]" src="image/image4.jpg">
+<h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha Fascino 125</h1>
+<h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹4.25 Lakh*</h2>
+<h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★☆☆ 3.7 </h3>
+<button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+
+<div class="w-[280px] bg-[#2F3E22]  h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+<img class="rounded-xl h-[200px] w-[360px]" src="image/image5.avif">
+<h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha FZ-S FI</h1>
+<h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹4.75 Lakh*</h2>
+<h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★★☆ 4.3</h3>
+<button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+ 
+</div>
+
+<div class="w-[280px] bg-[#2F3E22] h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+    <img class="rounded-xl h-[200px]" src="image/image6.jpg">
+    <h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha Aerox 155</h1>
+    <h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹2.90 Lakh*</h2>
+    <h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★☆☆ 3.8</h3>
+    <button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+<div class="w-[280px] bg-[#2F3E22] h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+    <img class="rounded-xl h-[200px] w-[300px]" src="image/image7.jpg">
+    <h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha XSR 700</h1>
+    <h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹1.35 Lakh</h2>
+    <h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★★☆ 4.5</h3>
+    <button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+<div class="w-[280px] bg-[#2F3E22] h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+    <img class="rounded-xl h-[200px]" src="image/image8.jpg">
+    <h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Fascino 125</h1>
+    <h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹2.10 Lakh*</h2>
+    <h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★★★☆ 4.2</h3>
+    <button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+<div class="w-[280px] bg-[#2F3E22] h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+    <img class="rounded-xl w-[300px] h-[200px]" src="image/image9.jpg">
+    <h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha Neo’s EV</h1>
+    <h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹3.50 Lakh*</h2>
+    <h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★☆☆☆ 2.2</h3>
+    <button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+<div class="w-[280px] bg-[#2F3E22] h-[390px] mx-4 border-2 border-[#2F3E22] rounded-xl shadow-[0_10px_25px_rgba(47,62,34,0.7)]">
+    <img class="rounded-xl" src="image/image10.webp">
+    <h1 class="text-[20px] ml-4 font-bold mt-3 text-[#f7f4ef]">Yamaha XSR 155</h1>
+    <h2 class="text-[15px] ml-4  text-[#f7f4ef]">From ₹1.85 Lakh*</h2>
+    <h3 class="ml-4 text-[#C2A14D] text-[20px] font-bold">★★☆☆☆ 2.9</h3>
+    <button class="bg-[#C2A14D] w-[230px] text-[#f7f4ef] font-semibold p-2 rounded ml-[20px] mt-4">Viwe Details</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Offer -->
+<div class="mt-[80px] px-6">
+<div class="bg-[#2F3E22] rounded-3xl overflow-hidden shadow-2xl shadow-green-900 transition">
+<div class="grid md:grid-cols-2">
+<img src="image/image5.avif" alt="Bike Offer"class="w-full h-full object-cover p-3 rounded-3xl  ">
+<div class="p-10 relative flex flex-col justify-center">
+<span class="absolute top-6 right-6 bg-[#C2A14D] font-semibold text-white px-4 py-1 rounded text-sm">LIMITED OFFER</span>
+<h2 class="text-4xl font-bold text-[#f7f4ef] mb-2 mt-10">New Year Special Deal</h2>
+<p class="text-[#f7f4ef] text-[15px] font-semibold mb-6">Flat ₹5,000 OFF + Free Helmet on selected bike models.<br><span class="text-[50px] ml-[150px]">🎁</span></p>
+<button class="bg-[#C2A14D] font-bold text-[#f7f4ef] px-8 py-3 rounded-xl text-lg hover:bg-[#2F3E22] transition">Grab Deal Now →</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Services -->
+<div>
+  <h1 class="text-center mt-[80px] text-[45px] font-bold text-[#2F3E22] ">
+    Our <span class="text-[#C2A14D]">Services</span>
+  </h1>
+  <p class="text-center font-semibold text-[20px] mb-12">
+    Trusted services to keep your bike smooth, safe & stylish
+  </p>
+</div>
+<div class="flex flex-wrap justify-center gap-10 px-3">
+  <div class="bg-white p-4 rounded-xl hover:shadow-xl shadow-[0_10px_25px_rgba(0,0,0,0.9)]  border-2 border-[#2F3E22] flex flex-col items-center text-center w-[200px] hover:scale-105">
+    <div class="bg-[#2F3E22] p-3 rounded-full mb-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#F5F5DC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h3 class="text-lg font-bold text-[#2F3E22] mb-1">Bike Servicing</h3>
+    <p class="text-gray-600 text-sm font-semibold">Regular maintenance & oil change.</p>
+  </div>
+
+ 
+  <div class="bg-white p-4 rounded-xl  hover:shadow-xl shadow-[0_10px_25px_rgba(0,0,0,0.9)]  border-2 border-[#2F3E22]  flex flex-col items-center text-center w-[200px] hover:scale-105">
+    <div class="bg-[#2F3E22] p-3 rounded-full mb-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#F5F5DC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 8c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.364-7.364l-1.414 1.414M6.05 17.95l-1.414 1.414M17.95 17.95l-1.414-1.414M6.05 6.05L4.636 7.464" />
+      </svg>
+    </div>
+    <h3 class="text-lg font-bold text-[#2F3E22] mb-1">Bike Repair</h3>
+    <p class="text-gray-600 text-sm font-semibold">Engine & suspension repair.</p>
+  </div>
+
+ 
+  <div class="bg-white p-4 rounded-xl  hover:shadow-xl shadow-[0_10px_25px_rgba(0,0,0,0.9)] border-2 border-[#2F3E22]  flex flex-col items-center text-center w-[200px] hover:scale-105">
+    <div class="bg-[#2F3E22] p-3 rounded-full mb-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#F5F5DC] " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <h3 class="text-lg font-bold text-[#2F3E22] mb-1">Test Ride</h3>
+    <p class="text-gray-600 text-sm font-semibold">Book a test ride online.</p>
+  </div>
+
+  
+  <div class="bg-white p-4 rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.9)] hover:shadow-xl  border-2 border-[#2F3E22]  flex flex-col items-center text-center w-[200px] hover:scale-105">
+    <div class="bg-[#2F3E22] p-3 rounded-full mb-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#F5F5DC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 8c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 2v2m0 16v2m10-10h-2M4 12H2" />
+      </svg>
+    </div>
+    <h3 class="text-lg font-bold text-[#2F3E22] mb-1">EMI & Finance</h3>
+    <p class="text-gray-600 text-sm font-semibold">Zero down payment & easy EMI.</p>
+  </div>
+
+  <div class="bg-white p-4 rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.9)] hover:shadow-xl border-2 border-[#2F3E22] flex flex-col items-center text-center w-[200px] hover:scale-105">
+    <div class="bg-[#2F3E22] p-3 rounded-full mb-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#F5F5DC] " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6" />
+      </svg>
+    </div>
+    <h3 class="text-lg font-bold text-[#2F3E22] mb-1">Insurance</h3>
+    <p class="text-gray-600 text-sm font-semibold">New insurance & claim assistance.</p>
+  </div>
+</div>
+
+
+<!---Bike Brand -->
+<div>
+    <h1 class="mt-[100px] text-[45px] text-[#2F3E22] font-bold text-center">Top Bike Brands<span class="text-[#C2A14D] ml-[16px]">We Serve </span></h1>
+    <p class="text-[20px]  font-semibold text-center">We use only genuine parts from India’s most trusted bike Brands</p>
+</div>
+<div class="overflow-hidden py-12 bg-[#f7f4ef] mt-[30px]">
+<div class="flex w-max animate-scroll pause">
+<div class="w-[210px] h-[150px] bg-[#2F3E22] mx-4  rounded-xl">
+<img class="rounded-xl h-[150px] w-[210px]" src="image/brand1.png">
+</div>
+
+<div class="w-[210px] h-[150px] bg-[#2F3E22] mx-4  rounded-xl">
+<img class="rounded-xl h-[150px] w-[210px]" src="image/brand2.png">
+</div>
+
+<div class="w-[210px] h-[150px] bg-[#2F3E22] mx-4  rounded-xl">
+<img class="rounded-xl w-[210px] h-[150px]" src="image/brand3.jpg">
+</div>
+
+<div class="w-[210px] bg-[#2F3E22] h-[150px] mx-4  rounded-xl">
+<img class="rounded-xl h-[150px] w-[210px]" src="image/brand4.webp">
+</div>
+
+<div class="w-[210px] bg-[#f7f4ef]  h-[150px] mx-4  rounded-xl">
+<img class="rounded-xl h-[150px] w-[210px]" src="image/brand5.png">
+</div>
+
+<div class="w-[210px] bg-[#f7f4ef] h-[150px] mx-4  rounded-xl">
+    <img class="rounded-xl h-[150px]" src="image/brand6.png">
+</div>
+<div class="w-[210px] bg-[#f7f4ef] h-[150px] mx-4  rounded-xl">
+    <img class="rounded-xl h-[150px] w-[210px]" src="image/brand7.png">
+    
+</div>
+
+<div class="w-[210px] bg-[#2F3E22] h-[150px] mx-4  rounded-xl">
+    <img class="rounded-xl h-[150px] w-[210px]" src="image/brand8.jpg">
+</div>
+
+<div class="w-[210px] bg-[#f7f4ef] h-[150px] mx-4  rounded-xl">
+    <img class="rounded-xl w-[210px] h-[150px]" src="image/brand9.png">
+</div>
+
+<div class="w-[210px] bg-[#f7f4ef] h-[150px] mx-4  rounded-xl">
+    <img class="rounded-xl h-[150px] w-[210px]" src="image/brand10.png">
+</div>
+</div>
+</div>
+</div>
+
+<!-- Reviwe -->
+ <div>
+    <h1 class="mt-[100px] text-[45px] text-[#2F3E22] font-bold text-center"> Customer<span class="text-[#C2A14D] ml-[16px]">Riviews</span></h1>
+    <p class="text-[20px]  font-semibold text-center">Real reviews from Happy Riders</p>
+</div>
+<div class="flex gap-5 ml-[20px] mt-[50px]">
+<div class="w-[290px] bg-[] p-6 rounded-2xl shadow-xl shadow-green-950 border-2 border-[#2F3E22] hover:scale-105">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://randomuser.me/api/portraits/men/32.jpg"class="w-14 h-14 rounded-full object-cover" />
+<div>
+<h4 class="font-bold text-[#2F3E22]">Amit Verma</h4><span class="text-sm">Honda Shine</span>
+</div>
+</div>
+<div class="text-[#C2A14D] text-lg mb-2">★★★★★</div>
+<p class="text-[#2F3E22]">Excellent service! My bike feels smooth and brand new.</p>
+</div>
+
+<div class="w-[290px] bg-white p-6 rounded-2xl shadow-xl shadow-green-950 border-2 border-[#2F3E22] hover:scale-105">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://randomuser.me/api/portraits/men/45.jpg"class="w-14 h-14 rounded-full object-cover" />
+<div>
+<h4 class="font-bold text-[#2F3E22]">Rahul Singh</h4>
+<span class="text-sm">Royal Enfield</span>
+</div>
+</div>
+<div class="text-[#C2A14D] text-lg mb-2">★★★★★</div>
+<p class="text-[#2F3E22]">Genuine parts and affordable pricing. Highly recommended!</p>
+</div>
+
+<div class="w-[290px] bg-white p-6 rounded-2xl shadow-xl shadow-green-950 border-2 border-[#2F3E22] hover:scale-105">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://randomuser.me/api/portraits/women/65.jpg"class="w-14 h-14 rounded-full object-cover" />
+<div>
+<h4 class="font-bold text-[#2F3E22]">Neha Sharma</h4><span class="text-sm">TVS Apache</span>
+</div>
+</div>
+<div class="text-[#C2A14D] text-lg mb-2">★★★★★</div>
+<p class="text-[#2F3E22]">
+Fast service and polite staff. Best bike workshop!
+</p>
+</div>
+
+<div class="w-[290px] bg-white p-6 rounded-2xl shadow-xl shadow-green-950 border-2 border-[#2F3E22] hover:scale-105">
+<div class="flex items-center gap-4 mb-4">
+<img src="https://randomuser.me/api/portraits/men/78.jpg"class="w-14 h-14 rounded-full object-cover" />
+<div>
+<h4 class="font-bold text-[#2F3E22]">Suresh Patel</h4>
+<span class="text-sm">Bajaj Pulsar</span>
+</div>
+</div>
+<div class="text-[#C2A14D] text-lg mb-2">★★★★★</div>
+<p class="text-[#2F3E22]">Very professional work and timely delivery. My bike performance improved a lot</p>
+</div>
+
+</div>
+
+
+
+
+<!-- Footer -->
+<footer class="bg-[#2F3E22] text-[#f7f4ef] pt-10 pb-6 mt-[80px]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-wrap gap-10 justify-between mb-12">
+<div class="max-w-sm">
+<img class="w-[100px] h-[100px] ml-[100px]" src="image/be7d62af9f1be0f9ab10b7224312c194_1_-removebg-preview.png">
+<p class="text-[16px] leading-relaxed">Trusted bike servicing & repair solution.Genuine parts, expert mechanics and affordable pricing.
+        </p>
+      </div>
+
+<div>
+<h4 class="text-lg font-semibold mb-4 text-[#C2A14D]">Quick Links</h4>
+<ul class="space-y-2 text-sm">
+<li><a href="#" class="hover:underline">Home</a></li>
+<li><a href="#" class="hover:underline">About</a></li> 
+<li><a href="#" class="hover:underline">Bikes</a></li>
+<li><a href="#" class="hover:underline">Servises</a></li>
+<li><a href="http://127.0.0.1:5500/login.html" class="hover:underline">Login</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="text-lg font-semibold mb-4 text-[#C2A14D]">Our Services</h4>
+<ul class="space-y-2 text-sm">
+<li>Bike Servicing</li>
+<li>Engine Repair</li>
+<li>Oil Change</li>
+<li>Brake & Clutch</li>
+<li>Genuine Spare Parts</li>
+</ul>
+</div>
+
+<div>
+<h4 class="text-lg font-semibold mb-4 text-[#C2A14D]">Contact Us</h4>
+<ul class="space-y-2 text-sm">
+<li>📞 +91 98765 43210</li>
+<li>📧 support@bikecare.com</li>
+<li>📍 Prayagraj, Uttar Pradesh</li>
+<li>🕒 Mon–Sun : 9AM – 8PM</li>
+</ul>
+</div>
+
+</div>
+<div class="border-t border-[#f7f4ef]/20 pt-6 text-center text-[17px] font-semibold">
+© 2026 YAMAHA. All Rights Reserved.
+</div>
+
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-scroll]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove(
+            'opacity-0',
+            'scale-95',
+            'translate-y-16'
+          );
+          entry.target.classList.add(
+            'opacity-100',
+            'scale-100',
+            'translate-y-0'
+          );
+          observer.unobserve(entry.target); // ek baar hi chale
+        }
+      });
+    },
+    {
+      threshold: 0.25,
+      rootMargin: '0px 0px -80px 0px'
+    }
+  );
+
+  items.forEach(item => observer.observe(item));
+</script>
 
 </body>
 </html>
